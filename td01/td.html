@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Formualire</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> </head>
+<html>
+
+<body>
+    <div class="container">
+        <h1>Générateur de rectangles</h1>
+        <form method="POST" action="td.php">
+            <div class="form-group">
+                <label for="nb">Nombre de rectangles</label>
+                <input type="text" class="form-control" id="nb" name="rectangles[nombre]"> </div>
+            <div class="form-group">
+                <label for="heuteur">Hauteur</label>
+                <input type="text" class="form-control" id="hauteur" name="rectangles[hauteur]"> </div>
+            <div class="form-group">
+                <label for="largeur">Largeur</label>
+                <input type="text" class="form-control" id="largeur" name="rectangles[largeur]"> </div>
+            <div class="form-group">
+                <label for="couleur">Couleur</label>
+                <select name="rectangles[couleur]">
+                    <option value="0">Aléatoire</option>
+                    <option value="red">Rouge</option>
+                    <option value="green">Vert</option>
+                    <option value="blue">Blue</option>
+                    <option value="orange">Orange</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-default">Générer</button>
+        </form>
+    </div>
+</body>
+
+</html>
