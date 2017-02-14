@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formualire</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <form method="post" action="./app.php">
+            <h2>Générateur de rectangles</h2>
+            <div class="form-group">
+                <label for="nombre">Nombre de rectangle(s)</label>
+                <input type="text" class="form-control" id="nb" name="nb"> </div>
+            <div class="form-group">
+                <label for="largeur">Largeur</label>
+                <input type="text" class="form-control" id="largeur" name="largeur"> </div>
+            <div class="form-group">
+                <label for="largeur">Hauteur</label>
+                <input type="text" class="form-control" id="hauteur" name="hauteur"> </div>
+            <div class="form-group">
+                <select name="couleur">
+                    <option value="0">Aléatoire</option>
+                    <option value="red">Rouge</option>
+                    <option value="green">Vert</option>
+                    <option value="blue">Bleu</option>
+                    <option value="orange">Orange</option>
+                    <option value="purple">Violet</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-default">Générer</button>
+        </form>
+    </div>
+</body>
+
+</html>
