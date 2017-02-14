@@ -10,6 +10,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: rgb(50, 50, 50);
+        }
+        
+        .container {
+            background-color: darkgray;
+            margin-top: 140px;
+            border-color: solid 1px black;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 
 <body>
@@ -84,8 +96,9 @@
             <div class="form-group">
                 <label for="resultat">Résultat</label>
                 <input type="text" class="form-control" id="resultat" name="resultat"> </div>
-            <button type="submit" class="btn btn-default">Envoyer</button>
-        </form>
+            <button type="submit" class="btn btn-success">Envoyer</button>
+            <br>
+            <br> </form>
     </div>
 </body>
 

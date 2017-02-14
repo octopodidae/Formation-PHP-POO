@@ -28,8 +28,11 @@ $sql->bindValue(":resultat", $_POST["resultat"]);
 
 
 // on exécute la requête
-$sql->execute();
-
+if ($sql->execute()) {
+  echo "<p> Match enregistré avec succès</p>";
+} else {
+    echo "<p>Erreur</p>";
+}
 
 
 ?>
