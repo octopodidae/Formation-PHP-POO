@@ -6,7 +6,6 @@ class Rectangle {
     public $couleur;
     public $hauteur;
     public $largeur;
-    public static $estCarre;
 
     public function __construct($params) {
 
@@ -21,11 +20,13 @@ class Rectangle {
         
         //$this->couleur =($params["couleur"] === 0) ? $this->couleurAleatoire() : $params["couleur"];
         
-        self::$estCarre = $this->hauteur === $this->largeur;
+        if ($this->estCarre()) {
+            throw new Exception("la forme carrée n'est pas autorisée <br>");
+        }
 
     }
     
-    private static function estCarre() {
+    private function estCarre() {
         return $this->hauteur === $this->largeur;
     }
         
@@ -49,12 +50,12 @@ class Rectangle {
    $nb = $_POST["nb"];
 
     for ($i = 0; $i < $nb; $i++) {
-        $rectangle = new Rectangle($_POST);
-        if (Rectangle::$estCarre){
-            echo "Forme carrée non-autorisée";
-            break;
-        } else {
+        try {
+            $rectangle = new Rectangle($_POST);
             echo $rectangle->genereDiv();
+        } catch (Exception $e){
+            echo $e->getMessage();
+            break;
         }
     }
     
