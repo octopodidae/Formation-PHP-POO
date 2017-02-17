@@ -14,10 +14,10 @@
         body {
             background-color: rgb(50, 50, 50);
         }
-        
+
         .container {
-            background-color: darkgray;
-            margin-top: 140px;
+            /*background-color: darkgray;*/
+            margin-top: 20px;
             border-color: solid 1px black;
             border-radius: 8px;
         }
@@ -26,7 +26,7 @@
 
 <body>
     <div class="container">
-        <form method="post" action="./app.php">
+        <form method="post" action="./app.php" class="well">
             <h2>MATCHS</h2>
             <div class="form-group">
                 <label for="equipe1">Equipe reçevant</label>
@@ -50,7 +50,7 @@
                     while ($equipe = $req->fetch())
                     {
                         echo "<option value = '" . $equipe["nom"] . "'>" .
-                        $equipe["nom"] . "</option>"; 
+                        $equipe["nom"] . "</option>";
                     } // Fin de la boucle des équipes
                     $req->closeCursor();
                     ?>
@@ -78,7 +78,7 @@
                     while ($equipe = $req->fetch())
                     {
                         echo "<option value = '" . $equipe["nom"] . "'>" .
-                        $equipe["nom"] . "</option>"; 
+                        $equipe["nom"] . "</option>";
                     } // Fin de la boucle des équipes
                     $req->closeCursor();
                     ?>
@@ -97,9 +97,54 @@
                 <label for="resultat">Résultat</label>
                 <input type="text" class="form-control" id="resultat" name="resultat"> </div>
             <button type="submit" class="btn btn-success">Envoyer</button>
+
             <br>
             <br> </form>
+        <div>
+          <button id="masquer" class="btn btn-primary">Masquer résultats</button>
+            <table class="table table-striped well">
+                <?php
+                  // Connexion à la base de données
+                  try
+                  {
+                      $bdd = new PDO('mysql:host=localhost;dbname=formation-php-poo;charset=utf8', 'root');
+                      //echo "<p>Connection works !</p>";
+                  }
+                  catch(Exception $e)
+                  {
+                      die('Erreur : '.$e->getMessage());
+                  }
+
+                  // On récupère les équipes
+                  $req = $bdd->query('SELECT * FROM matchs');
+
+                  while ($row = $req->fetch())
+                  {
+                      echo "<tr>";
+                      echo "<td>" . $row ["equipe_recevant"] . "</td>";
+                      echo "<td>" . $row ["equipe_recue"] . "</td>";
+                      echo "<td>" . $row ["resultat"] . "</td>";
+                      echo "</tr>";
+                  } // Fin de la boucle des équipes
+                  $req->closeCursor();
+                  ?>
+                    <!-- <td>cell 1</td>
+                    <td>cell 2</td>
+                    <td>cell 3</td> -->
+            </table>
+        </div>
     </div>
+
+    <script>
+    $(document).ready(function(){
+
+        $("#masquer").click(function() {$("table").hide();
+        $(this).text("Afficher résultats").removeClass("btn-primary").addClass("btn-info")});
+
+        $(".btn-info").click(function() {$("table").show();
+        $(this).text("Masquer résultats").removeClass("btn-info").addClass("btn-primary")});
+    });
+    </script>
 </body>
 
 </html>
